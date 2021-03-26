@@ -77,7 +77,7 @@ ptp-front-end   LoadBalancer   10.104.242.160   localhost     3000:31083/TCP   7
 ```cmd
 >w:\Pirimid\Git Repositories\ptp\ptp-K8s-yaml-files>curl localhost:8080/assets 
 {"timestamp":"2021-03-26T03:47:27.084+00:00","status":401,"error":"Unauthorized","message":"","path":"/assets"}
-``
+```
 
 ## Stop all resourses
 
