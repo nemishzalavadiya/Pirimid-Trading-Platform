@@ -1,5 +1,12 @@
-Microsoft Windows [Version 10.0.19042.870]
-(c) 2020 Microsoft Corporation. All rights reserved.
+
+
+## Start PTP internship project
+
+### make sure images are available at dockerhub 
+
+- 17ceuog074
+  - ptp-front-end
+  - ptp-nack-end
 
 W:\Pirimid\Git Repositories\ptp\ptp-K8s-yaml-files>kubectl create -f .
 configmap/env created
@@ -87,6 +94,31 @@ ptp-front-end   LoadBalancer   10.104.242.160   localhost     3000:31083/TCP   7
 
 W:\Pirimid\Git Repositories\ptp\ptp-K8s-yaml-files>curl localhost:8080/assets
 {"timestamp":"2021-03-26T03:47:27.084+00:00","status":401,"error":"Unauthorized","message":"","path":"/assets"}
-W:\Pirimid\Git Repositories\ptp\ptp-K8s-yaml-files>cd ..
 
-W:\Pirimid\Git Repositories\ptp>
+
+
+## Stop all resourses
+
+C:\Users\Neel>kubectl delete all --all
+pod "postgres-db-c8f49d5f9-dfkhw" deleted
+pod "ptp-back-end-796956c7c6-tp9rz" deleted
+pod "ptp-front-end-657794ffd9-2m2rd" deleted
+service "kubernetes" deleted
+service "postgres-db" deleted
+service "ptp-back-end" deleted
+service "ptp-front-end" deleted
+deployment.apps "postgres-db" deleted
+deployment.apps "ptp-back-end" deleted
+deployment.apps "ptp-front-end" deleted
+
+## stop configmaps, secrets, persistentvolumeclaim
+
+C:\Users\Neel>kubectl delete configmaps env
+configmap "env" deleted
+
+C:\Users\Neel>kubectl delete secrets postgres-secret
+secret "postgres-secret" deleted
+
+C:\Users\Neel>kubectl delete PersistentVolumeClaim ptp-data
+persistentvolumeclaim "ptp-data" deleted
+
