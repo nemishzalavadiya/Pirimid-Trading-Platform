@@ -1,0 +1,12 @@
+[submodule "ptp-backend"]
+	path = ptp-backend
+	url = https://gitlab.com/pirimid/ptp/ptp-backend.git
+[submodule "ptp-web-client"]
+	path = ptp-web-client
+	url = https://gitlab.com/pirimid/ptp/ptp-web-client.git
+[submodule "docker-compose"]
+	path = docker-compose
+	url = https://gitlab.com/pirimid/ptp/docker-compose.git
+[submodule "ptp-kyc"]
+	path = ptp-kyc
+	url = https://gitlab.com/pirimid/ptp/ptp-kyc.git
