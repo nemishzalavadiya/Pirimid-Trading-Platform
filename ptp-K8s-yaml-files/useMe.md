@@ -1,8 +1,8 @@
 ## Start PTP internship project
 ### Make sure images are available at dockerhub 
-- 17ceuog074
+- Docker_Hub_username
   - ptp-front-end
-  - ptp-nack-end
+  - ptp-back-end
   
 ```cmd
 >w:\Pirimid\Git Repositories\ptp\ptp-K8s-yaml-files>kubectl create -f . 
