@@ -1,0 +1,49 @@
+version: "3"
+services:
+  postgres-db:
+    image: "postgres:9.6-alpine"
+    container_name: postgres-db
+    restart: always
+    env_file: .env
+    volumes:
+      - ptp-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=$POSTGRES_DB
+      - POSTGRES_USER=$POSTGRES_USER
+      - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+    networks:
+      - ptp-network
+
+  ptp-back-end:
+    image: "17ceuog074/ptp-back-end"
+    container_name: ptp-back-end
+    restart: always
+    environment:
+      - SPRING_DATASOURCE_URL=$SPRING_DATASOURCE_URL
+    ports:
+    - "8080:8080"
+    depends_on:
+      - postgres-db
+    networks:
+      - ptp-network
+
+  ptp-front-end:
+    image: "17ceuog074/ptp-front-end"
+    container_name: ptp-front-end
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - BACK_END_HOST=ptp-back-end
+    depends_on:
+      - ptp-back-end
+    networks:
+      - ptp-network
+
+volumes:
+  ptp-data:
+
+networks:
+  ptp-network:
