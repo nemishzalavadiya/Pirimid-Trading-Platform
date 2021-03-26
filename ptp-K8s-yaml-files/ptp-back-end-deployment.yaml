@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -c
+    kompose.version: 1.21.0 (992df58d8)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: ptp-back-end
+  name: ptp-back-end
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: ptp-back-end
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -c
+        kompose.version: 1.21.0 (992df58d8)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/ptp-network: "true"
+        io.kompose.service: ptp-back-end
+    spec:
+      containers:
+      - env:
+        - name: SPRING_DATASOURCE_URL
+          valueFrom:
+            configMapKeyRef:
+              key: SPRING_DATASOURCE_URL
+              name: env
+        image: 17ceuog074/ptp-back-end
+        imagePullPolicy: ""
+        name: ptp-back-end
+        ports:
+        - containerPort: 8080
+        resources: {}
+      initContainers:
+      - name: init-back-db
+        image: busybox
+        command: ['sh', '-c', 'until nc -z postgres-db:5432; do echo waiting for postgres-db; sleep 2; done;']
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes: null
+status: {}
