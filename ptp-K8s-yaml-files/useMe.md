@@ -1,5 +1,5 @@
 ## Start PTP internship project
-### make sure images are available at dockerhub 
+### Make sure images are available at dockerhub 
 - 17ceuog074
   - ptp-front-end
   - ptp-nack-end
@@ -79,7 +79,7 @@ ptp-front-end   LoadBalancer   10.104.242.160   localhost     3000:31083/TCP   7
 {"timestamp":"2021-03-26T03:47:27.084+00:00","status":401,"error":"Unauthorized","message":"","path":"/assets"}
 ```
 
-## Stop all resourses
+### Stop all resourses
 
 ```cmd
 >C:\Users\Neel>kubectl delete all --all 
@@ -95,7 +95,7 @@ deployment.apps "ptp-back-end" deleted
 deployment.apps "ptp-front-end" deleted
 ```
 
-## stop configmaps, secrets, persistentvolumeclaim
+### Stop configmaps, secrets, persistentvolumeclaim
 
 ```cmd
 >C:\Users\Neel>kubectl delete configmaps env 
